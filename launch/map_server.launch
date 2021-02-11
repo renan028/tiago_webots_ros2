@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="map_server" type="map_server" name="map_server" 
+      args="$(find tiago_webots_ros)/resources/map/intralogistics.yaml">
+    </node>
+</launch>

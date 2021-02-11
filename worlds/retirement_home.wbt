@@ -1,0 +1,813 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.9568822803803116 -0.273922853476636 -0.09665698028281253 1.2798298172012992
+  position 4.099395800752685 37.362240580892454 22.161922803003822
+  follow "TIAGo Iron"
+}
+TexturedBackground {
+  texture "empty_office"
+  skybox FALSE
+}
+TiagoIron {
+  translation 2 0.0950217 11
+  controller "<extern>"
+  supervisor TRUE
+  cameraSlot [
+    Camera {
+      rotation 0 1 0 -1.57079632679
+      name "camera 2D"
+      fieldOfView 1.309
+      width 400
+      height 240
+      antiAliasing TRUE
+      recognition Recognition {
+        frameColor 0.929412 0.831373 0
+        frameThickness 3
+      }
+    }
+  ]
+  lidarSlot [
+    InertialUnit {
+      rotation 0 1 0 1.5708
+      name "inertial unit 2"
+    }
+    GPS {
+    }
+    Lidar {
+      name "Hokuyo URG-04LX-UG01"
+      model "Hokuyo URG-04LX-UG01"
+      horizontalResolution 640
+      fieldOfView 3.49066
+      verticalFieldOfView 0.0062800449775112
+      numberOfLayers 1
+      minRange 0.1
+      maxRange 10
+      noise 0.02
+    }
+  ]
+}
+Floor {
+  translation 12.5 0 10
+  size 25 20
+  tileSize 2 2
+  appearance MattePaint {
+    baseColor 0.605936 0.609995 0.601862
+  }
+}
+Pedestrian {
+  translation 11.84 1.27 8.06856
+  rotation 0 1 0 0.523594
+}
+Pedestrian {
+  translation 5.05473 1.27 7.39952
+  rotation 0 -1 0 -0.786195307179586
+  name "pedestrian(1)"
+  shirtColor 1 0 0
+  pantsColor 1 0 0
+  shoesColor 0 0 0
+  skinColor 0.560784 0.34902 0.00784314
+}
+Chair {
+  translation 12.5 0 7
+}
+Wall {
+  translation 0 0 10
+  rotation 0 1 0 1.5707996938995747
+  name "hall(2)"
+  size 20 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 4 0 7.5
+  rotation 0 1 0 1.5707996938995747
+  name "h(1)"
+  size 7 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 11 0 7.5
+  rotation 0 1 0 1.5707996938995747
+  name "h(2)"
+  size 7 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 18 0 7.5
+  rotation 0 1 0 1.5707996938995747
+  name "h(3)"
+  size 7 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+AdvertisingBoard {
+  translation 3.87 1.88 12.8
+  rotation 0 1 0 3.14159
+  name "room_sign(1)"
+  frontTexture [
+    "textures/1.png"
+  ]
+  backTexture [
+    "textures/1.png"
+  ]
+  displayWidth 1
+  displayHeight 1
+  frameThickness 0.2
+  baseRatio 2.3
+}
+AdvertisingBoard {
+  translation 11.1 1.88 12.8
+  rotation 0 1 0 3.14159
+  name "room_sign(5)"
+  frontTexture [
+    "textures/3.png"
+  ]
+  backTexture [
+    "textures/3.png"
+  ]
+  displayWidth 1
+  displayHeight 1
+  frameThickness 0.2
+  baseRatio 2.3
+}
+AdvertisingBoard {
+  translation 14.6 1.88 12.8
+  rotation 0 1 0 3.14159
+  name "room_sign(6)"
+  frontTexture [
+    "textures/5.png"
+  ]
+  backTexture [
+    "textures/5.png"
+  ]
+  displayWidth 1
+  displayHeight 1
+  frameThickness 0.2
+  baseRatio 2.3
+}
+AdvertisingBoard {
+  translation 18.1 1.88 12.8
+  rotation 0 1 0 3.14159
+  name "room_sign(7)"
+  frontTexture [
+    "textures/6.png"
+  ]
+  backTexture [
+    "textures/6.png"
+  ]
+  displayWidth 1
+  displayHeight 1
+  frameThickness 0.2
+  baseRatio 2.3
+}
+AdvertisingBoard {
+  translation 21.6 1.88 12.8
+  rotation 0 1 0 3.14159
+  name "room_sign(8)"
+  frontTexture [
+    "textures/8.png"
+  ]
+  backTexture [
+    "textures/8.png"
+  ]
+  displayWidth 1
+  displayHeight 1
+  frameThickness 0.2
+  baseRatio 2.3
+}
+AdvertisingBoard {
+  translation 5.88 1.88 11.2
+  rotation 0 1 0 3.14159
+  name "room_sign(2)"
+  frontTexture [
+    "textures/2.png"
+  ]
+  backTexture [
+    "textures/2.png"
+  ]
+  displayWidth 1
+  displayHeight 1
+  frameThickness 0.2
+  baseRatio 2.3
+}
+AdvertisingBoard {
+  translation 12.9 1.88 11.2
+  rotation 0 1 0 3.14159
+  name "room_sign(3)"
+  frontTexture [
+    "textures/4.png"
+  ]
+  backTexture [
+    "textures/4.png"
+  ]
+  displayWidth 1
+  displayHeight 1
+  frameThickness 0.2
+  baseRatio 2.3
+}
+AdvertisingBoard {
+  translation 19.9 1.88 11.2
+  rotation 0 1 0 3.14159
+  name "room_sign(4)"
+  frontTexture [
+    "textures/7.png"
+  ]
+  backTexture [
+    "textures/7.png"
+  ]
+  displayWidth 1
+  displayHeight 1
+  frameThickness 0.2
+  baseRatio 2.3
+}
+Wall {
+  translation 11 0 16.5
+  rotation 0 1 0 1.5707996938995747
+  name "hall(5)"
+  size 7 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 14.4 0 14.75
+  rotation 0 1 0 1.5707996938995747
+  name "qh(1)"
+  size 3.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 17.9 0 14.75
+  rotation 0 1 0 1.5707996938995747
+  name "qh(2)"
+  size 3.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 21.4 0 14.75
+  rotation 0 1 0 1.5707996938995747
+  name "qh(3)"
+  size 3.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 24.9 0 8.25
+  rotation 0 1 0 1.5707996938995747
+  name "qh(4)"
+  size 16.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 5.5 0 20
+  name "hall(1)"
+  size 11 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 2.25 0 13
+  name "hall(3)"
+  size 4.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 11.325 0 13
+  name "q(1)"
+  size 0.75 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 14.075 0 13
+  name "q(2)"
+  size 0.75 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 12.75 0 16.5
+  name "q(9)"
+  size 3.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 2 0 9
+  name "c(1)"
+  size 4 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 5.25 0 11
+  name "c(2)"
+  size 2.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 5.25 0 4
+  name "c(8)"
+  size 2.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 9.75 0 11
+  name "c(3)"
+  size 2.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 9.75 0 4
+  name "c(9)"
+  size 2.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 12.25 0 11
+  name "c(4)"
+  size 2.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 12.25 0 4
+  name "c(10)"
+  size 2.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 16.75 0 11
+  name "c(5)"
+  size 2.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 16.75 0 4
+  name "c(11)"
+  size 2.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 19.25 0 11
+  name "c(6)"
+  size 2.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 19.25 0 4
+  name "c(12)"
+  size 2.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 23.75 0 11
+  name "c(7)"
+  size 2.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 23.75 0 4
+  name "c(13)"
+  size 2.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 16.25 0 16.5
+  name "q(10)"
+  size 3.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 19.75 0 16.5
+  name "q(11)"
+  size 3.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 23.25 0 16.5
+  name "q(12)"
+  size 3.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 14.825 0 13
+  name "q(3)"
+  size 0.75 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 17.575 0 13
+  name "q(4)"
+  size 0.75 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 18.325 0 13
+  name "q(5)"
+  size 0.75 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 21.075 0 13
+  name "q(6)"
+  size 0.75 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 21.825 0 13
+  name "q(7)"
+  size 0.75 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 24.575 0 13
+  name "q(8)"
+  size 0.75 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 8.75 0 13
+  name "hall(4)"
+  size 4.5 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Wall {
+  translation 12.5 0 0
+  name "wall(5)"
+  size 25 2.5 0.2
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 7 2.4
+    }
+  }
+}
+Charger {
+  translation 23.72 0 14.89
+  children [
+    Transform {
+      translation 0 0.15 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 1 0
+            transparency 0.2
+            roughness 0.2
+            metalness 0
+            emissiveColor 1 0 0
+          }
+          geometry DEF CHARGER_GEOM Cylinder {
+            height 0.05
+            radius 0.25
+            subdivision 24
+          }
+        }
+        PointLight {
+          attenuation 0 0 12
+          color 1 0 0
+          intensity 0.3
+        }
+      ]
+    }
+  ]
+  battery [
+    100, 100, 1
+  ]
+  radius 0.25
+}
+BathroomSink {
+  translation 14.28 0.81 15.7
+  rotation 0.5773502691896258 0.5773502691896258 0.5773502691896258 -2.094395307179586
+}
+Sofa {
+  translation 4.7 0 6
+}
+Sofa {
+  translation 4.7 0 9
+  name "sofa(1)"
+}
+Sofa {
+  translation 10.2 0 9
+  rotation 0 1 0 3.14
+  name "sofa(2)"
+}
+Sofa {
+  translation 17.2 0 9
+  rotation 0 1 0 3.14
+  name "sofa(5)"
+}
+Sofa {
+  translation 24 0 9
+  rotation 0 1 0 3.14
+  name "sofa(6)"
+}
+Toilet {
+  translation 13.75 0 14.75
+  rotation 0 1 0 -1.57
+}
+Sofa {
+  translation 10.2 0 6
+  rotation 0 1 0 3.14
+  name "sofa(3)"
+}
+Sofa {
+  translation 17.2 0 6
+  rotation 0 1 0 3.14
+  name "sofa(4)"
+}
+CeilingSpotLight {
+  translation 2 2.5 11.04
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 7.52 2.5 12
+  name "ceiling light(2)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 12.71 2.5 12
+  name "ceiling light(6)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 14.52 2.5 12
+  name "ceiling light(8)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 16.11 2.5 12
+  name "ceiling light(13)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 19.5 2.5 12
+  name "ceiling light(15)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 23.18 2.5 12
+  name "ceiling light(18)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 21.6 2.5 12
+  name "ceiling light(19)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 21.6 2.5 7.32
+  name "ceiling light(20)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 21.6 2.5 2.24
+  name "ceiling light(21)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 19.5 2.5 14.82
+  name "ceiling light(16)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 23.17 2.5 14.82
+  name "ceiling light(17)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 16.11 2.5 14.93
+  name "ceiling light(14)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 14.41 2.5 9.64
+  name "ceiling light(9)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 14.41 2.5 7.33
+  name "ceiling light(10)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 14.41 2.5 5.15
+  name "ceiling light(11)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 14.41 2.5 2.07
+  name "ceiling light(12)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 7.45 2.5 2.07
+  name "ceiling light(22)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 1.88 2.5 2.07
+  name "ceiling light(24)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 1.88 2.5 6.58
+  name "ceiling light(25)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 7.45 2.5 5.77
+  name "ceiling light(23)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 12.71 2.5 14.87
+  name "ceiling light(7)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 5.63 2.5 12
+  name "ceiling light(4)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 5.63 2.5 14.59
+  name "ceiling light(5)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+CeilingSpotLight {
+  translation 7.52 2.5 9.04
+  name "ceiling light(3)"
+  spotLightIntensity 4
+  spotLightCastShadows TRUE
+}
+Table {
+  translation 13 0 7
+  rotation 0 1 0 1.57
+  feetSize 0.5 0.45
+}
+Cabinet {
+  translation 19 0 4.2
+}

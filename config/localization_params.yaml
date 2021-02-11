@@ -1,0 +1,16 @@
+global_frame_id: map
+odom_frame_id: odom
+base_frame_id: base_link
+scan_topic: scan
+d_thresh: 0.01
+a_thresh: 0.25
+l2_max: 0.5
+resolution: 0.05
+patch_size: 32
+strategy: gn
+use_map_topic: false
+first_map_only: false
+use_pose_on_new_map: false
+force_update_on_initial_pose: false
+gloc_particles: 3000
+gloc_iters: 20

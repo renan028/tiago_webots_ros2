@@ -1,0 +1,36 @@
+<launch>
+    <node pkg="iris_lama_ros" type="slam2d_ros" name="iris_lama_slam">
+    <param name="global_frame_id" value="map"/>
+    <param name="odom_frame_id" value="odom"/>
+    <param name="base_frame_id" value="base_link"/>
+    <param name="scan_topic" value="scan"/>
+    <param name="initial_pos_x" value="0"/>
+    <param name="initial_pos_y" value="0"/>
+    <param name="initial_pos_a" value="0"/>
+    <param name="d_thresh" value="0.01"/>
+    <param name="a_thresh" value="0.25"/>
+    <param name="l2_max" value="0.5"/>
+    <param name="resolution" value="0.05"/>
+    <param name="patch_size" value="32"/>
+    <param name="strategy" value="gm"/>
+    <param name="max_iterations" value="100"/>
+    <param name="use_compression" value="false"/>
+    <param name="compression_algorithm" value="lz4"/>
+    <param name="cache_size" value="100"/>
+    <param name="mrange" value="10"/>
+    <param name="truncate" value="0"/>
+    <param name="truncate_ray" value="0"/>
+    <param name="map_publish_period" value="5"/>
+    <!--
+    <param name="particles" value="30"/>
+    <param name="seed" value="0"/>
+    <param name="threads" value="-1"/>
+    <param name="sigma" value="0.05"/>
+    <param name="lgain" value="3.0"/>
+    <param name="srr" value="0.1"/>
+    <param name="str" value="0.2"/>
+    <param name="stt" value="0.1"/>
+    <param name="srt" value="0.1"/>
+    -->
+    </node>
+</launch>

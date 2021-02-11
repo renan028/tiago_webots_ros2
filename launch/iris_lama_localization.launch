@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="iris_lama_ros" type="loc2d_ros" name="iris_lama_localization">
+    <rosparam file="$(find tiago_webots_ros)/config/localization_params.yaml" command="load"/>
+  </node>
+</launch>
