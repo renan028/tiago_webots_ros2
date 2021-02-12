@@ -13,7 +13,7 @@ TexturedBackground {
 }
 TiagoIron {
   translation -7.92 0.0949784 -1.71
-  controller "ros"
+  controller "<extern>"
   supervisor TRUE
   cameraSlot [
     Camera {
