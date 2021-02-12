@@ -19,6 +19,7 @@ include_directories(
 find_package(ament_cmake REQUIRED)
 find_package(action_msgs REQUIRED)
 find_package(nav2_bt_navigator REQUIRED)
+find_package(nav2_map_server REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
@@ -42,6 +43,7 @@ target_link_libraries(${PROJECT_NAME}
 ament_target_dependencies(${PROJECT_NAME} 
   action_msgs  
   nav2_bt_navigator
+  nav2_map_server
   rclcpp
   sensor_msgs
   std_msgs

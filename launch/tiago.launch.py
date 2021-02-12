@@ -44,6 +44,15 @@ def generate_launch_description():
         }.items()
     )
 
+    # Map Server Node
+    map_file = os.path.join(package_dir, 'resources', 'map', 'intralogistics.yaml')
+    map_server_node = launch_ros.actions.Node(
+        package='nav2_map_server',
+        executable='map_server',
+        output='screen',
+        parameters=[{'yaml_filename': map_file}]
+    )
+
     # Rviz node
     use_rviz = launch.substitutions.LaunchConfiguration('rviz', default=True)
     rviz_config = os.path.join(get_package_share_directory(package_name), 'config', 'odometry.rviz')
@@ -57,5 +66,6 @@ def generate_launch_description():
 
     return launch.LaunchDescription([
         webots,
+        map_server_node,
         rviz
     ])
