@@ -26,7 +26,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 from ament_index_python.packages import get_package_share_directory
 
-package_name = 'tiago_webots_ros'
+package_name = 'tiago_webots_ros2'
 
 def generate_launch_description():
     package_dir = get_package_share_directory(package_name)
@@ -38,13 +38,15 @@ def generate_launch_description():
         launch_arguments={
             'executable': 'webots_differential_drive_node',
             'world': os.path.join(package_dir, 'worlds', 'intralogistics_2.wbt'),
-            'node_parameters': os.path.join(package_dir, 'resource', 'tiago.yaml'),
+            'node_parameters': os.path.join(package_dir, 'resources', 'tiago.yaml'),
+            'prefix': ['xterm -e gdb -ex run --args'],
+            'output': 'screen'
         }.items()
     )
 
     # Rviz node
     use_rviz = launch.substitutions.LaunchConfiguration('rviz', default=False)
-    rviz_config = os.path.join(get_package_share_directory(package_name), 'resource', 'odometry.rviz')
+    rviz_config = os.path.join(get_package_share_directory(package_name), 'resources', 'odometry.rviz')
     rviz = launch_ros.actions.Node(
         package='rviz2',
         executable='rviz2',
