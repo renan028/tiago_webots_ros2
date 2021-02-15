@@ -10,6 +10,7 @@
 #include <geometry_msgs/msg/twist.hpp>
 #include <nav_msgs/msg/odometry.hpp>
 #include <sensor_msgs/msg/joint_state.hpp>
+#include <sensor_msgs/msg/image.hpp>
 #include <sensor_msgs/msg/imu.hpp>
 #include <sensor_msgs/msg/laser_scan.hpp>
 #include <std_msgs/msg/u_int32.hpp>
@@ -38,12 +39,16 @@ class RobotTask : public rclcpp::Node {
   std::string robot_model_;
 
   // subscribers and services
-  rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr lidar_sub_;
   rclcpp::Publisher<sensor_msgs::msg::LaserScan>::SharedPtr laser_pub_;
+  rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr lidar_sub_;
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr wheels_sub_;
+  rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr camera_sub_;
 
   // odom
   sensor_msgs::msg::JointState wheels_;
+
+  // camera
+  sensor_msgs::msg::Image image_;
   
   /** It updates the scan info. A subscription to the Laser sensor topic.
    * @param scan the scan coming from the range sensor
@@ -54,18 +59,24 @@ class RobotTask : public rclcpp::Node {
    * @param joints the encoder info
    */
   void updateJoints(const sensor_msgs::msg::JointState::SharedPtr joints);
+
+  /** Update the image. A subscription to the camera 2d topic.
+   * @param image the encoder info
+   */
+  void updateImage(const sensor_msgs::msg::Image::SharedPtr image);
   
   /** A method to enable all useful devices for autonomous navigation.
    * 
    */ 
-  void enableDevices(bool enable = true);
+  void enableDevices();
   
   public: 
     RobotTask();
     ~RobotTask();
 
-    void enableLidar(bool enable);
-    void enableWheel(bool enable);    
+    void enableLidar();
+    void enableWheel();    
+    void enableCamera();    
 };
 
 }
