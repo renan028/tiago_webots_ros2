@@ -68,7 +68,9 @@ def generate_launch_description():
         executable='map_server',
         name='map_server',
         output='screen',
-        parameters=[{'yaml_filename': map_file}]
+        parameters=[{'yaml_filename': map_file,
+            'topic_name': 'map',
+            'frame_id': 'map'}]
     )
 
     configure_event = EmitEvent(
@@ -106,7 +108,7 @@ def generate_launch_description():
 
     # Rviz node
     use_rviz = launch.substitutions.LaunchConfiguration('rviz', default=True)
-    rviz_config = os.path.join(get_package_share_directory(package_name), 'config', 'odometry.rviz')
+    rviz_config = os.path.join(get_package_share_directory(package_name), 'config', 'rviz.rviz')
     rviz = Node(
         package='rviz2',
         executable='rviz2',
