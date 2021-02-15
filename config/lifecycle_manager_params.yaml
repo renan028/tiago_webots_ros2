@@ -1,0 +1,5 @@
+lifecycle_manager:
+  ros__parameters:
+    autostart: true
+    node_names: ['controller_server', 'planner_server', 'recoveries_server', 'bt_navigator', 'waypoint_follower']
+    bond_timeout: 4.0
