@@ -31,6 +31,7 @@ package_name = 'tiago_webots_ros2'
 def generate_launch_description():
     package_dir = get_package_share_directory(package_name)
 
+    # Webots
     webots = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(get_package_share_directory('webots_ros2_core'), 'launch', 'robot_launch.py')
@@ -39,9 +40,15 @@ def generate_launch_description():
             'executable': 'webots_differential_drive_node',
             'world': os.path.join(package_dir, 'worlds', 'intralogistics_2.wbt'),
             'node_parameters': os.path.join(package_dir, 'config', 'tiago.yaml'),
-            'prefix': ['xterm -e gdb -ex run --args'],
             'output': 'screen'
         }.items()
+    )
+
+    # TiagoRobot node
+    tiago_robot_node = Node(
+        package='tiago_webots_ros2',
+        executable='robot_task_node',
+        output='screen'
     )
 
     # Map Server Node
@@ -66,6 +73,7 @@ def generate_launch_description():
 
     return launch.LaunchDescription([
         webots,
+        tiago_robot_node,
         map_server_node,
         rviz
     ])
