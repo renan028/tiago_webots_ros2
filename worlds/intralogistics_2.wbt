@@ -37,8 +37,8 @@ TiagoIron {
     GPS {
     }
     Lidar {
-      name "Hokuyo URG-04LX-UG01"
-      model "Hokuyo URG-04LX-UG01"
+      name "Hokuyo_URG_04LX_UG01"
+      model "Hokuyo_URG_04LX_UG01"
       horizontalResolution 640
       fieldOfView 3.49066
       verticalFieldOfView 0.0062800449775112
