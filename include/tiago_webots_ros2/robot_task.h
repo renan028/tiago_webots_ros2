@@ -30,7 +30,7 @@
 #include <thread>
 
 // webots_ros
-#include <webots_ros2_msgs/srv/set_int.hpp>
+#include <webots_ros2_msgs/msg/recognition_objects.hpp>
 
 namespace tiago_webots_ros {
 
@@ -43,12 +43,16 @@ class RobotTask : public rclcpp::Node {
   rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr lidar_sub_;
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr wheels_sub_;
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr camera_sub_;
+  rclcpp::Subscription<webots_ros2_msgs::msg::RecognitionObjects>::SharedPtr 
+    recognition_sub_;
 
   // odom
   sensor_msgs::msg::JointState wheels_;
 
   // camera
   sensor_msgs::msg::Image image_;
+  webots_ros2_msgs::msg::RecognitionObjects rec_objects_;
+
   // create a TF for lidar and camera
   void setTF();
   
@@ -66,6 +70,12 @@ class RobotTask : public rclcpp::Node {
    * @param image the encoder info
    */
   void updateImage(const sensor_msgs::msg::Image::SharedPtr image);
+
+  /** Update the recognized objects. A subscription to the recognition topic.
+   * @param image the encoder info
+   */
+  void updateRecognizedObjects(
+    const webots_ros2_msgs::msg::RecognitionObjects::SharedPtr objects);
   
   /** A method to enable all useful devices for autonomous navigation.
    * 
@@ -79,6 +89,7 @@ class RobotTask : public rclcpp::Node {
     void enableLidar();
     void enableWheel();    
     void enableCamera();    
+    void enableRecognition();    
 };
 
 }

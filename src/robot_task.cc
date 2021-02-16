@@ -41,6 +41,13 @@ void RobotTask::enableCamera() {
     std::bind(&RobotTask::updateImage, this, std::placeholders::_1));
 }
 
+void RobotTask::enableRecognition() {
+  recognition_sub_ = this->create_subscription<
+    webots_ros2_msgs::msg::RecognitionObjects>("/camera_2D/recognition", 
+      rclcpp::SensorDataQoS(), std::bind(&RobotTask::updateRecognizedObjects, 
+        this, std::placeholders::_1));
+}
+
 void RobotTask::enableLidar() {
   lidar_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
     "/Hokuyo_URG_04LX_UG01", rclcpp::SensorDataQoS(),
@@ -75,8 +82,14 @@ void RobotTask::updateImage(const sensor_msgs::msg::Image::SharedPtr image) {
   image_ = *image;
 }
 
+void RobotTask::updateRecognizedObjects(
+    const webots_ros2_msgs::msg::RecognitionObjects::SharedPtr objects) {
+  rec_objects_ = *objects;
+}
+
 void RobotTask::enableDevices() {
   enableCamera();
+  enableRecognition();
   enableLidar();
   enableWheel();
 }

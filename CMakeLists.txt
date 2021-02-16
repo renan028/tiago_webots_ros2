@@ -23,6 +23,7 @@ find_package(rclcpp_lifecycle REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(webots_ros2_msgs REQUIRED)
 
 include_directories(
   include
@@ -39,6 +40,7 @@ set(${PROJECT_NAME}_dependencies
   sensor_msgs
   std_msgs
   tf2_ros
+  webots_ros2_msgs
 )
 
 #############
