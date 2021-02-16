@@ -22,7 +22,7 @@ find_package(rclcpp REQUIRED)
 find_package(rclcpp_lifecycle REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
 
 include_directories(
   include
@@ -38,7 +38,7 @@ set(${PROJECT_NAME}_dependencies
   rclcpp_lifecycle
   sensor_msgs
   std_msgs
-  tf2
+  tf2_ros
 )
 
 #############

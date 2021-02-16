@@ -49,6 +49,8 @@ class RobotTask : public rclcpp::Node {
 
   // camera
   sensor_msgs::msg::Image image_;
+  // create a TF for lidar and camera
+  void setTF();
   
   /** It updates the scan info. A subscription to the Laser sensor topic.
    * @param scan the scan coming from the range sensor
