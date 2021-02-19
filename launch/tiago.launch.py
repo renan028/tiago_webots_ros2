@@ -65,6 +65,12 @@ def generate_launch_description():
         launch_arguments={}.items()
     )
 
+    # Navigator Node
+    navigation_node = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('tiago_webots_ros2'), 'launch', 'navigation_launch.py')
+        ),
+        launch_arguments={}.items()
     )
 
     # Rviz node
@@ -84,4 +90,5 @@ def generate_launch_description():
         map_server_node,
         rviz
         amcl_node,
+        navigation_node,
     ])
