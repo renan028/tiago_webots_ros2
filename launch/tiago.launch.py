@@ -57,6 +57,12 @@ def generate_launch_description():
         launch_arguments={}.items()
     )
 
+    # Amcl Node
+    amcl_node = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('tiago_webots_ros2'), 'launch', 'localization_launch.py')
+        ),
+        launch_arguments={}.items()
     )
 
     )
@@ -77,4 +83,5 @@ def generate_launch_description():
         tiago_robot_node,
         map_server_node,
         rviz
+        amcl_node,
     ])
