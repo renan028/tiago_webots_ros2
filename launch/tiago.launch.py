@@ -57,37 +57,8 @@ def generate_launch_description():
         launch_arguments={}.items()
     )
 
-    configure_event = EmitEvent(
-        event=ChangeState(
-            lifecycle_node_matcher=matches_action(map_server_node),
-            transition_id=lifecycle_msgs.msg.Transition.TRANSITION_CONFIGURE
-        )
     )
 
-    activate_event = RegisterEventHandler(
-        OnStateTransition(
-            target_lifecycle_node=map_server_node, goal_state='inactive',
-            entities=[
-                LogInfo(
-                    msg="[LifecycleLaunch] Map Server node is activating."),
-                EmitEvent(event=ChangeState(
-                    lifecycle_node_matcher=matches_action(map_server_node),
-                    transition_id=lifecycle_msgs.msg.Transition.TRANSITION_ACTIVATE
-                ))
-            ]
-        )
-    )
-
-    shutdown_event = RegisterEventHandler(
-        OnShutdown(
-            on_shutdown=[
-                EmitEvent(event=ChangeState(
-                  lifecycle_node_matcher=matches_node_name(node_name='map_server'),
-                  transition_id=lifecycle_msgs.msg.Transition.TRANSITION_ACTIVE_SHUTDOWN
-                )),
-                LogInfo(msg="[LifecycleLaunch] Map Server node is exiting.")
-            ]
-        )
     )
 
     # Rviz node
