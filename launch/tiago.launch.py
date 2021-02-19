@@ -50,15 +50,11 @@ def generate_launch_description():
     )
 
     # Map Server Node
-    map_file = os.path.join(package_dir, 'resources', 'map', 'intralogistics.yaml')
-    map_server_node = LifecycleNode(
-        package='nav2_map_server',
-        executable='map_server',
-        name='map_server',
-        output='screen',
-        parameters=[{'yaml_filename': map_file,
-            'topic_name': 'map',
-            'frame_id': 'map'}]
+    map_server_node = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('tiago_webots_ros2'), 'launch', 'map_server_launch.py')
+        ),
+        launch_arguments={}.items()
     )
 
     configure_event = EmitEvent(
@@ -109,8 +105,5 @@ def generate_launch_description():
         webots,
         tiago_robot_node,
         map_server_node,
-        activate_event,
-        configure_event,
-    #    shutdown_event,
         rviz
     ])
