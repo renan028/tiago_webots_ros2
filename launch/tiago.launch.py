@@ -50,48 +50,15 @@ def generate_launch_description():
     )
 
     # Map Server Node
-    map_file = os.path.join(package_dir, 'resources', 'map', 'intralogistics.yaml')
-    map_server_node = LifecycleNode(
-        package='nav2_map_server',
-        executable='map_server',
-        name='map_server',
-        output='screen',
-        parameters=[{'yaml_filename': map_file,
-            'topic_name': 'map',
-            'frame_id': 'map'}]
+    map_server_node = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('tiago_webots_ros2'), 'launch', 'map_server_launch.py')
+        ),
+        launch_arguments={}.items()
     )
 
-    configure_event = EmitEvent(
-        event=ChangeState(
-            lifecycle_node_matcher=matches_action(map_server_node),
-            transition_id=lifecycle_msgs.msg.Transition.TRANSITION_CONFIGURE
-        )
     )
 
-    activate_event = RegisterEventHandler(
-        OnStateTransition(
-            target_lifecycle_node=map_server_node, goal_state='inactive',
-            entities=[
-                LogInfo(
-                    msg="[LifecycleLaunch] Map Server node is activating."),
-                EmitEvent(event=ChangeState(
-                    lifecycle_node_matcher=matches_action(map_server_node),
-                    transition_id=lifecycle_msgs.msg.Transition.TRANSITION_ACTIVATE
-                ))
-            ]
-        )
-    )
-
-    shutdown_event = RegisterEventHandler(
-        OnShutdown(
-            on_shutdown=[
-                EmitEvent(event=ChangeState(
-                  lifecycle_node_matcher=matches_node_name(node_name='map_server'),
-                  transition_id=lifecycle_msgs.msg.Transition.TRANSITION_ACTIVE_SHUTDOWN
-                )),
-                LogInfo(msg="[LifecycleLaunch] Map Server node is exiting.")
-            ]
-        )
     )
 
     # Rviz node
@@ -109,8 +76,5 @@ def generate_launch_description():
         webots,
         tiago_robot_node,
         map_server_node,
-        activate_event,
-        configure_event,
-    #    shutdown_event,
         rviz
     ])
