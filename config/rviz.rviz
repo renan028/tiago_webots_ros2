@@ -74,7 +74,7 @@ Visualization Manager:
         All Enabled: false
         base_link:
           Value: true
-        base_scan:
+        laser_frame:
           Value: true
         imu_link:
           Value: true
@@ -95,7 +95,7 @@ Visualization Manager:
         map:
           odom:
             base_link:
-              base_scan:
+              laser_frame:
                 {}
               imu_link:
                 {}
@@ -130,7 +130,7 @@ Visualization Manager:
       Size (m): 0.05
       Style: Flat Squares
       Topic:
-        Depth: 5
+        Depth: 10
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Best Effort
