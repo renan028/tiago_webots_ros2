@@ -3,7 +3,8 @@
 namespace tiago_webots_ros {
 
 RobotTask::RobotTask() :
-    Node("robot_task") {
+    Node("robot_task"),
+    clock(std::make_shared<rclcpp::Clock>(RCL_ROS_TIME)) {
   enableDevices();
   setTF();
 }
@@ -14,9 +15,8 @@ void RobotTask::setTF() {
   static tf2_ros::StaticTransformBroadcaster br(this);
   geometry_msgs::msg::TransformStamped transformStamped;
   
-  transformStamped.header.stamp = this->now();
+  transformStamped.header.stamp = clock->now();
   transformStamped.header.frame_id = "base_link";
-  transformStamped.child_frame_id = robot_model_ + "/Hokuyo_URG_04LX_UG01";
   transformStamped.transform.translation.x = 0;
   transformStamped.transform.translation.y = 0;
   transformStamped.transform.translation.z = 0;
@@ -26,9 +26,11 @@ void RobotTask::setTF() {
   transformStamped.transform.rotation.y = q.y();
   transformStamped.transform.rotation.z = q.z();
   transformStamped.transform.rotation.w = q.w();
+  
+  transformStamped.child_frame_id = "Hokuyo_URG_04LX_UG01";
   br.sendTransform(transformStamped);
 
-  transformStamped.child_frame_id = robot_model_ + "/camera_2D";
+  transformStamped.child_frame_id = "camera_2D";
   br.sendTransform(transformStamped);
 
   transformStamped.child_frame_id = "laser_frame";
@@ -45,7 +47,7 @@ void RobotTask::enableRecognition() {
   recognition_sub_ = this->create_subscription<
     webots_ros2_msgs::msg::RecognitionObjects>("/camera_2D/recognition", 
       rclcpp::SensorDataQoS(), std::bind(&RobotTask::updateRecognizedObjects, 
-        this, std::placeholders::_1));
+      this, std::placeholders::_1));
 }
 
 void RobotTask::enableLidar() {
@@ -70,11 +72,8 @@ void RobotTask::updateJoints(const sensor_msgs::msg::JointState::SharedPtr
 void RobotTask::updateLaserScan(const sensor_msgs::msg::LaserScan::SharedPtr 
     scan) {
   sensor_msgs::msg::LaserScan msg = *scan;
-  msg.header.stamp = this->now();
   msg.header.frame_id = "laser_frame";
-  std::vector<float> ranges = msg.ranges;
-  std::reverse(ranges.begin(), ranges.end());
-  msg.ranges = ranges;
+  std::reverse(msg.ranges.begin(), msg.ranges.end());
   laser_pub_->publish(msg);
 }
 
