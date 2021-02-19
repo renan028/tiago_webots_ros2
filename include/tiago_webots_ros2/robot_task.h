@@ -2,6 +2,7 @@
 
 // ros
 #include <rclcpp/rclcpp.hpp>
+#include <rclcpp/clock.hpp>
 #include <geometry_msgs/msg/quaternion.hpp>
 #include <geometry_msgs/msg/point.hpp>
 #include <geometry_msgs/msg/point_stamped.hpp>
@@ -36,8 +37,8 @@ namespace tiago_webots_ros {
 
 class RobotTask : public rclcpp::Node {
   // robot
-  std::string robot_model_;
-
+  rclcpp::Clock::SharedPtr clock;
+  
   // subscribers and services
   rclcpp::Publisher<sensor_msgs::msg::LaserScan>::SharedPtr laser_pub_;
   rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr lidar_sub_;
