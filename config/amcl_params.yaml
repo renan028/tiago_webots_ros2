@@ -12,7 +12,6 @@ amcl:
     do_beamskip: false
     global_frame_id: "map"
     lambda_short: 0.1
-    set_initial_pose: false
     laser_likelihood_max_dist: 2.0
     laser_max_range: 100.0
     laser_min_range: -1.0
@@ -40,6 +39,11 @@ amcl:
     always_reset_initial_pose: false
     scan_topic: scan
     map_topic: map
+    set_initial_pose: true
+    initial_pose.x: -7.9
+    initial_pose.y: 0.0
+    initial_pose.z: 0.0
+    initial_pose.a: 0.0
 
 amcl_map_client:
   ros__parameters:
