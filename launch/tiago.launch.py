@@ -41,10 +41,12 @@ def generate_launch_description():
     )
 
     # TiagoRobot node
+    tiago_params = os.path.join(package_dir, 'config', 'tiago_params.yaml')
     tiago_robot_node = Node(
         package='tiago_webots_ros2',
         executable='robot_task_node',
-        output='screen'
+        output='screen',
+        parameters=[tiago_params]
     )
 
     # Map Server Node

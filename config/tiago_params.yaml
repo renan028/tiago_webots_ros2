@@ -1,0 +1,5 @@
+robot_task_node:
+  ros__parameters:
+    initial_pose_x: -7.92
+    initial_pose_y: 1.71
+    initial_pose_a: 0
