@@ -74,21 +74,18 @@ def generate_launch_description():
     )
 
     # Rviz node
-    use_rviz = launch.substitutions.LaunchConfiguration('rviz', default=True)
-    rviz_config = os.path.join(get_package_share_directory(package_name), 'config', 'rviz.rviz')
-    rviz = Node(
-        package='rviz2',
-        executable='rviz2',
-        output='screen',
-        arguments=['--display-config=' + rviz_config],
-        condition=launch.conditions.IfCondition(use_rviz)
+    rviz_node = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('tiago_webots_ros2'), 'launch', 'rviz_launch.py')
+        ),
+        launch_arguments={}.items()
     )
 
     return launch.LaunchDescription([
         webots,
         tiago_robot_node,
         map_server_node,
-        rviz
         amcl_node,
         navigation_node,
+        rviz_node
     ])
