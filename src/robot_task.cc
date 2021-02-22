@@ -44,10 +44,11 @@ void RobotTask::enableCamera() {
 }
 
 void RobotTask::enableRecognition() {
-  recognition_sub_ = this->create_subscription<
-    webots_ros2_msgs::msg::RecognitionObjects>("/camera_2D/recognition", 
-      rclcpp::SensorDataQoS(), std::bind(&RobotTask::updateRecognizedObjects, 
-      this, std::placeholders::_1));
+  recognition_sub_webots_ = this->create_subscription<
+    webots_ros2_msgs::msg::WbCameraRecognitionObjects>(
+    "/camera_2D/recognitions/webots", rclcpp::SensorDataQoS(), 
+    std::bind(&RobotTask::updateRecognizedObjectsWebots, this, 
+    std::placeholders::_1));
 }
 
 void RobotTask::enableLidar() {
@@ -81,9 +82,9 @@ void RobotTask::updateImage(const sensor_msgs::msg::Image::SharedPtr image) {
   image_ = *image;
 }
 
-void RobotTask::updateRecognizedObjects(
-    const webots_ros2_msgs::msg::RecognitionObjects::SharedPtr objects) {
-  rec_objects_ = *objects;
+void RobotTask::updateRecognizedObjectsWebots(
+    const webots_ros2_msgs::msg::WbCameraRecognitionObjects::SharedPtr objects) {
+  rec_objects_webots_ = *objects;
 }
 
 void RobotTask::enableDevices() {

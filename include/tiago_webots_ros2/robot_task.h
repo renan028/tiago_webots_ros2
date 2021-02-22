@@ -31,7 +31,7 @@
 #include <thread>
 
 // webots_ros
-#include <webots_ros2_msgs/msg/recognition_objects.hpp>
+#include <webots_ros2_msgs/msg/wb_camera_recognition_objects.hpp>
 
 namespace tiago_webots_ros {
 
@@ -44,15 +44,15 @@ class RobotTask : public rclcpp::Node {
   rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr lidar_sub_;
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr wheels_sub_;
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr camera_sub_;
-  rclcpp::Subscription<webots_ros2_msgs::msg::RecognitionObjects>::SharedPtr 
-    recognition_sub_;
+  rclcpp::Subscription<webots_ros2_msgs::msg::WbCameraRecognitionObjects>::SharedPtr 
+    recognition_sub_webots_;
 
   // odom
   sensor_msgs::msg::JointState wheels_;
 
   // camera
   sensor_msgs::msg::Image image_;
-  webots_ros2_msgs::msg::RecognitionObjects rec_objects_;
+  webots_ros2_msgs::msg::WbCameraRecognitionObjects rec_objects_webots_;
 
   // create a TF for lidar and camera
   void setTF();
@@ -72,12 +72,13 @@ class RobotTask : public rclcpp::Node {
    */
   void updateImage(const sensor_msgs::msg::Image::SharedPtr image);
 
-  /** Update the recognized objects. A subscription to the recognition topic.
-   * @param image the encoder info
+  /** Update the Webots recognized objects. A subscription to the recognition 
+   * topic.
+   * @param objects the objects as in webots API
    */
-  void updateRecognizedObjects(
-    const webots_ros2_msgs::msg::RecognitionObjects::SharedPtr objects);
-  
+  void updateRecognizedObjectsWebots(
+    const webots_ros2_msgs::msg::WbCameraRecognitionObjects::SharedPtr objects);
+
   /** A method to enable all useful devices for autonomous navigation.
    * 
    */ 
