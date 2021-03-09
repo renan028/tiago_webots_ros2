@@ -5,8 +5,8 @@ namespace tiago_webots_ros {
 RobotTask::RobotTask() :
     Node("robot_task"),
     clock(std::make_shared<rclcpp::Clock>(RCL_ROS_TIME)) {
-  enableDevices();
-  setTF();
+  //enableDevices();
+  //setTF();
 }
 
 RobotTask::~RobotTask() {}
@@ -65,6 +65,12 @@ void RobotTask::enableWheel() {
     std::bind(&RobotTask::updateJoints, this, std::placeholders::_1));
 }
 
+void RobotTask::enableGPS() {
+  gps_sub_ = this->create_subscription<geometry_msgs::msg::PointStamped>("/gps/gps",
+    rclcpp::SensorDataQoS(), 
+    std::bind(&RobotTask::updateGPS, this, std::placeholders::_1));
+}
+
 void RobotTask::updateJoints(const sensor_msgs::msg::JointState::SharedPtr 
     joints) {
   wheels_ = *joints;
@@ -87,11 +93,16 @@ void RobotTask::updateRecognizedObjectsWebots(
   rec_objects_webots_ = *objects;
 }
 
+void RobotTask::updateGPS(const geometry_msgs::msg::PointStamped::SharedPtr gps) {
+  gps_ = *gps;
+}
+
 void RobotTask::enableDevices() {
   enableCamera();
   enableRecognition();
   enableLidar();
   enableWheel();
+  enableGPS();
 }
 
 } // end namespace tiago_webots_ros
